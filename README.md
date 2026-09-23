@@ -1,23 +1,34 @@
 # WhattaDocs-platform 📖
 
-## 📌 Il Contesto e la Sfida
-La crescente proliferazione di documentazione tecnica nei contesti organizzativi complessi evidenzia i limiti dei tradizionali sistemi di *information retrieval*. I metodi convenzionali, basati prevalentemente su parole chiave e su una consultazione di tipo lineare, risultano inadeguati a sostenere processi cognitivi complessi quali la ricerca esplorativa e la costruzione di senso, specialmente laddove sia necessario ricomporre informazioni frammentate e superare barriere terminologiche specialistiche. Inoltre, le attuali soluzioni AI commerciali si presentano spesso come "black box" chiuse: prive di flessibilità, carenti nell'annotazione semantica e inadeguate rispetto ai rigorosi requisiti di governance e sicurezza tipici dell'ambito enterprise.
+## 📌 The Context and the Challenge
+The growing proliferation of technical documentation in complex organizational contexts highlights the limitations of traditional information retrieval systems. Conventional methods, based primarily on keywords and linear browsing, are inadequate to support complex cognitive processes such as exploratory search and sense-making, especially when it is necessary to reconstruct fragmented information and overcome specialized terminology barriers. Furthermore, current commercial AI solutions often present themselves as closed "black boxes": inflexible, lacking semantic annotation, and inadequate for the rigorous governance and security requirements typical of the enterprise and vertical sectors.
 
-## 🚀 La Soluzione: WhattaDocs
-Per rispondere a questa esigenza, lo spin-off dell'Università degli Studi di Milano **WhattaData** ha ideato **WhattaDocs**: un assistente conversazionale documentale progettato per ridefinire i paradigmi di elaborazione dei documenti. 
+## 🚀 The Solution: WhattaDocs
+To address this need, the University of Milan spin-off WhattaData has created WhattaDocs: a conversational document assistant designed to redefine document processing paradigms.
 
-Il sistema combina un'architettura **RAG (Retrieval-Augmented Generation)** con un'interfaccia pensata per permettere agli utenti di:
-* Interagire in linguaggio naturale direttamente con il proprio patrimonio informativo caricato.
-* Creare nuovi progetti e collegarli a file e cartelle da analizzare.
-* Monitorare le statistiche di utilizzo della piattaforma.
+The system combines a Retrieval-Augmented Generation (RAG) architecture with an interface designed to allow users to:
+* Interact directly with their uploaded information assets in natural language.
+* Create new projects and link them to files and folders for analysis.
+* Monitor platform usage statistics.
 
-## 👤 Il Mio Ruolo e Contributo (UX/UI & Front-end)
-Il mio intervento si è concentrato sulla **riprogettazione della prima versione dell'interfaccia** e sull'espansione della piattaforma con nuove funzionalità chiave, tra cui:
-* **Gestione Team e Governance:** Una dashboard per creare gruppi di lavoro, definire ruoli di accesso specifici e filtrare i membri.
-* **Modelli AI Personalizzati:** Un'area dedicata all'addestramento e alla creazione di modelli AI basati su tassonomie caricate direttamente dall'utente.
+*Note on the Project Scope: The WhattaDocs global roadmap includes the development of numerous additional requirements and advanced features, significantly extending the current scope of the application and the specific integrations described in this document.*
 
-## 🛠 Metodologia e Sviluppo
-Il processo di riprogettazione ha seguito un rigoroso framework di UX Design, traducendo gli obiettivi di business e le evidenze della ricerca qualitativa in un'architettura dell'informazione.
+## 👤 My Role and Contribution (UX/UI & Front-end)
+My work focused on **redesigning the first version of the interface** and expanding the platform with new key features, including:
+* **Team Management and Governance:** A dashboard for creating workgroups, defining specific access roles, and filtering members.
+* **Custom AI Models:** A dedicated area for training and creating AI models based on taxonomies uploaded directly by the user.
 
-* **Prototipazione e Testing:** I prototipi sono stati realizzati in **Figma** e validati attraverso sessioni di testing qualitativo **Think Aloud** su profili enterprise e specialistici. Questo ha permesso di identificare e risolvere tempestivamente attriti di usabilità.
-* **Sviluppo React (Contenuto del Repository):** Oltre alla fase di design, ho curato lo sviluppo front-end. **Il codice sorgente ospitato in questo repository contiene specificamente l'implementazione in React della pagina dedicata alla gestione del patrimonio informativo** (creazione di nuovi progetti e collegamento alle fonti documentali).
+## 🛠 Methodology and Development
+The redesign process followed a rigorous UX Design framework, translating business objectives and qualitative research findings into a structured information architecture.
+
+* **Prototyping and Testing:** The prototypes were created in **Figma** (designed exclusively for a target desktop resolution of **1920px**) and validated through **Think Aloud** qualitative testing sessions on enterprise and specialist profiles. This allowed us to promptly identify and resolve usability issues.
+* **React and Supabase Development (Repository Content):** In addition to the design phase, I oversaw the front-end development to put the skills I acquired into practice. **The code hosted in this repository contains the React implementation of the page dedicated to managing information assets**. The application integrates **Supabase** to actively manage the database, allowing resources to be loaded, modified, and deleted. Please note that the database modeling was not derived from an in-depth architectural design phase, but was deliberately limited to the essentials to support front-end development and technical operations.
+
+## 🤍 Accessibility
+The entire site has undergone rigorous manual intervention to ensure a basic level of accessibility for all users, implementing the following best practices:
+* **Images with *alt* attribute:** Insert the `alt` attribute on all visual content, so that users using assistive technologies can understand the context.
+* **HTML Semantic Hierarchy:** Correct hierarchical use of heading tags (`<h1>` - `<h6>`) and semantic use of HTML5 landmarks (e.g., `<header>`, `<main>`, `<footer>`).
+* **Accessible Forms:** Explicit linking between input fields and their labels (`<label>`).
+* **Skip Links:** Insert links to jump directly to the main content. This element, visible only when keyboard focus is received, allows users to bypass the navigation bar.
+* **ARIA Attributes:** Integration of WAI-ARIA attributes to ensure that assistive technologies correctly understand the state and operation of more complex interactive components.
+* **Keyboard and Focus Navigation:** All interactive elements (buttons, links, forms) are accessible via the Tab, Enter, and Space keys, always maintaining a clear visual indicator of the active focus state on the screen.
