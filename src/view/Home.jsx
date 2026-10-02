@@ -13,6 +13,7 @@ import 'cally';
 
 function Home() {
     const {
+        isInizializzato,
         tipoCard, tipoRinomina, caricamento, fileSelezionato,
         listaFile, fileDaRinominare, fileDaSostituire,
         nomeCercato, urlFIle, filtri, cartellaAperta,
@@ -42,7 +43,7 @@ function Home() {
     }, [mostraFiltri, setMostraFiltri]);
 
     return (
-        <main className="relative bg-[#EBE3D799] pb-12 flex-1">
+        <main className="relative bg-[#EBE3D799] flex-1">
             <h1 className="sr-only">Dashboard e Gestione File</h1>
 
             {tipoCard === 'rinomina' && (
@@ -203,7 +204,15 @@ function Home() {
             >
                 <h2 id="file-list-heading" className="sr-only">Elenco dei file caricati</h2>
                 
-                {listaFile && listaFile.map((file, index) => {
+                {isInizializzato && listaFile && listaFile.length === 0 && (
+                    <div className="flex justify-center items-center h-full min-h-[15vh]">
+                        <p className="text-2xl font-archivio text-[#000C14] font-semibold opacity-50">
+                            No files or folders uploaded
+                        </p>
+                    </div>
+                )}
+
+                {listaFile && listaFile.length > 0 && listaFile.map((file, index) => {
                     const nomeProprietario = "Proprietario";
                     const dataFormattata = file.created_at ? new Date(file.created_at).toLocaleDateString('it-IT') : "00/00/0000";
 
@@ -212,14 +221,13 @@ function Home() {
 
                     return (
                         <div key={file.id || index} className="w-full p-4 bg-white shadow rounded-lg flex justify-between text-black shrink-0 mt-8 first:mt-0">
-
+                            
                             <div className="grid grid-cols-8 items-center gap-8 min-w-0 flex-1 text-black font-inter text-sm font-bold">
-
+                                
                                 <div className="col-span-2 flex items-center gap-4 min-w-0">
                                     <div className="w-8 h-8 flex items-center justify-center shrink-0">
                                         <img src={file.icona} alt="" aria-hidden="true" className="w-full h-full object-contain" />
                                     </div>
-
                                     <div className="min-w-0 flex-1 relative group cursor-pointer">
                                         <span className="truncate block text-black">
                                             {file.name}

@@ -17,7 +17,7 @@ export function useHomeViewModel() {
     const [tipoRinomina, setTipoRinomina] = useState(null);
 
     const [fileSelezionato, setFileSelezionato] = useState(null);
-    const [caricamento, setCaricamento] = useState(false); // Usato anche per il wipe iniziale
+    const [caricamento, setCaricamento] = useState(false); 
 
     const [listaFile, setListaFile] = useState([]);
 
@@ -56,7 +56,6 @@ export function useHomeViewModel() {
                     await supabase.storage.from('documenti').remove(percorsiStorage);
                 }
 
-                // 4. Elimina tutti i record dalla tabella
                 const ids = tuttiIFile.map(f => f.id);
                 const { error: deleteError } = await supabase.from('files').delete().in('id', ids);
                 if (deleteError) throw deleteError;
@@ -173,7 +172,6 @@ export function useHomeViewModel() {
         setMostraFiltri(false);
     };
 
-    // Attende che l'inizializzazione (svuotamento) sia finita prima di fare fetch normali
     useEffect(() => {
         if (isInizializzato) {
             recuperaFile(nomeCercato, filtri);
@@ -495,6 +493,7 @@ export function useHomeViewModel() {
     };
 
     return {
+        isInizializzato,
         tipoCard,
         tipoRinomina,
         fileSelezionato,

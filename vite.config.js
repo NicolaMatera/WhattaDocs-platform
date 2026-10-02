@@ -8,4 +8,5 @@ export default defineConfig({
     react(),      // Plugin per far funzionare React (JSX, Fast Refresh, ecc.)
     tailwindcss(), // Plugin per Tailwind CSS v4
   ],
+  base: '/WhattaDocs-platform/',
 })
