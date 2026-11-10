@@ -199,7 +199,7 @@ function Home() {
             </section>
 
             <section 
-                className="mt-24 w-[60%] mx-auto max-h-[40vh] overflow-y-auto custom-scrollbar pr-2 pt-2"
+                className="mt-24 w-[60%] mx-auto max-h-[40vh] min-h-52 overflow-y-auto custom-scrollbar pr-2 pt-2"
                 aria-labelledby="file-list-heading"
             >
                 <h2 id="file-list-heading" className="sr-only">Elenco dei file caricati</h2>
@@ -216,7 +216,7 @@ function Home() {
                     const nomeProprietario = "Proprietario";
                     const dataFormattata = file.created_at ? new Date(file.created_at).toLocaleDateString('it-IT') : "00/00/0000";
 
-                    const isUltimo = index === listaFile.length - 1;
+                    const isUltimo = listaFile.length > 1 && index === listaFile.length - 1;
                     const classePosizioneTooltip = isUltimo ? "bottom-full mb-1" : "top-full mt-1";
 
                     return (

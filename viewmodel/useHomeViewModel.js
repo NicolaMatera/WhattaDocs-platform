@@ -36,22 +36,18 @@ export function useHomeViewModel() {
 
     const [mostraFiltri, setMostraFiltri] = useState(false);
 
-    // --- NUOVA LOGICA: SVUOTA DATABASE ALL'AVVIO ---
     const svuotaAmbienteIniziale = async () => {
         try {
             setCaricamento(true);
             
-            // 1. Recupera tutti i record esistenti
             const { data: tuttiIFile, error: fetchError } = await supabase.from('files').select('*');
             if (fetchError) throw fetchError;
 
             if (tuttiIFile && tuttiIFile.length > 0) {
-                // 2. Estrai i percorsi fisici dallo Storage
                 const percorsiStorage = tuttiIFile
                     .filter(f => f.storage_path)
                     .map(f => f.storage_path);
 
-                // 3. Elimina fisicamente i file dal bucket
                 if (percorsiStorage.length > 0) {
                     await supabase.storage.from('documenti').remove(percorsiStorage);
                 }
@@ -61,20 +57,18 @@ export function useHomeViewModel() {
                 if (deleteError) throw deleteError;
             }
 
-            setListaFile([]); // Assicura che la UI sia vuota
+            setListaFile([]); 
         } catch (error) {
             console.error("Errore durante lo svuotamento iniziale:", error);
         } finally {
             setCaricamento(false);
-            setIsInizializzato(true); // Permette il normale funzionamento dell'app
+            setIsInizializzato(true); 
         }
     };
 
-    // Esegue il wipe al primo render del componente
     useEffect(() => {
         svuotaAmbienteIniziale();
     }, []);
-    // -----------------------------------------------
 
     const calcolaEtichettaTipo = (file) => {
         if (file.is_folder) return "Cartella";
